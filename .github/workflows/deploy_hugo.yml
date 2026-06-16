@@ -8,6 +8,12 @@ on:
   workflow_dispatch:
 
 
+# Prevent overlapping Hugo deployments
+concurrency:
+  group: hugo-deployment
+  cancel-in-progress: true
+
+
 permissions:
   contents: read
   pages: write
@@ -29,7 +35,7 @@ jobs:
           submodules: recursive
 
 
-      - name: Pull latest main
+      - name: Ensure latest main branch
         run: |
           git pull origin main
 
@@ -58,7 +64,6 @@ jobs:
     needs: build
 
     runs-on: ubuntu-latest
-
 
     environment:
       name: github-pages
