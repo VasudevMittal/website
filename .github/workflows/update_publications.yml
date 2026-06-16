@@ -1,0 +1,54 @@
+name: Update Publications
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+
+  workflow_dispatch:
+
+
+jobs:
+
+  update-publications:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+
+      - name: Install dependencies
+        run: |
+          pip install requests pyyaml
+
+
+      - name: Run ADS updater
+        env:
+          ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
+          ORCID_ID: ${{ secrets.ORCID_ID }}
+
+        run: |
+          python scripts/run_ADS.py
+
+
+      - name: Commit updated publications
+        run: |
+
+          git config user.name "github-actions"
+
+          git config user.email "github-actions@github.com"
+
+          git add data/publications.yaml
+
+          git diff --cached --quiet || \
+          git commit -m "Automatic publication update"
+
+          git push
