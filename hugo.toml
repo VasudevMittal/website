@@ -1,4 +1,4 @@
-baseURL = "https://vm.github.io/"
+baseURL = "https://vasudevmittal.github.io/"
 languageCode = "en-us"
 title = "Vasudev Mittal"
 theme = "hugo-coder"
