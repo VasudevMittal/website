@@ -1,0 +1,17 @@
+{{ define "content" }}
+
+<section class="container page">
+
+  <article class="pub-page">
+
+    <h1>{{ .Title }}</h1>
+
+    {{ .Content }}
+
+    {{ partial "publications.html" . }}
+
+  </article>
+
+</section>
+
+{{ end }}

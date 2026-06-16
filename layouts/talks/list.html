@@ -1,0 +1,194 @@
+{{ define "content" }}
+
+<section class="container page">
+
+<article class="conf-page">
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ $conf := sort .Site.Data.talks.conferences "date" "desc" }}
+
+<style>
+
+/* =========================
+   WRAPPER
+   ========================= */
+
+.conf-wrapper {
+  max-width: 980px;
+  margin: 3rem auto;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+/* =========================
+   YEAR HEADER
+   ========================= */
+
+.conf-year {
+  margin: 3rem 0 1.2rem;
+  text-align: center;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  opacity: 0.85;
+}
+
+.conf-year::before,
+.conf-year::after {
+  content: "";
+  display: inline-block;
+  width: 3rem;
+  height: 1px;
+
+  background: currentColor;
+  opacity: 0.25;
+
+  vertical-align: middle;
+  margin: 0 0.75rem;
+}
+
+/* =========================
+   ITEM
+   ========================= */
+
+.conf-item {
+  padding: 1.4rem 0;
+
+  border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.conf-item:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   TITLE
+   ========================= */
+
+.conf-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.conf-title a {
+  color: color-mix(in srgb, var(--link-color, #2f6fdb) 85%, currentColor);
+  text-decoration: none;
+}
+
+.conf-title a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   META
+   ========================= */
+
+.conf-meta {
+  font-size: 1.15rem;
+  opacity: 0.78;
+}
+
+/* =========================
+   DATE
+   ========================= */
+
+.conf-date {
+  font-size: 1.05rem;
+  opacity: 0.65;
+  margin-top: 0.2rem;
+}
+
+/* =========================
+   PRIZE (THEME SAFE HIGHLIGHT)
+   ========================= */
+
+.conf-prize {
+  margin-top: 0.75rem;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+
+  display: inline-block;
+
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.conf-prize a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+</style>
+
+
+<div class="conf-wrapper">
+
+{{ $currentYear := "" }}
+
+{{ range $conf }}
+
+  {{ $year := (time .date).Year }}
+
+  {{ if ne $year $currentYear }}
+    <div class="conf-year">{{ $year }}</div>
+    {{ $currentYear = $year }}
+  {{ end }}
+
+  <div class="conf-item">
+
+    <!-- TITLE -->
+    <div class="conf-title">
+
+      {{ if .url }}
+        <a href="{{ .url }}" target="_blank">
+          {{ .title }}
+        </a>
+      {{ else }}
+        {{ .title }}
+      {{ end }}
+
+    </div>
+
+    <!-- EVENT + LOCATION -->
+    <div class="conf-meta">
+      {{ .event }} • {{ .location }}
+    </div>
+
+    <!-- DATE -->
+    <div class="conf-date">
+      {{ .date }}
+    </div>
+
+    <!-- PRIZE -->
+    {{ if .prize }}
+      <div class="conf-prize">
+
+        🏆 {{ .prize }}
+
+        {{ if .prize_url }}
+          — <a href="{{ .prize_url }}" target="_blank">link</a>
+        {{ end }}
+
+      </div>
+    {{ end }}
+
+  </div>
+
+{{ end }}
+
+</div>
+
+</article>
+
+</section>
+
+{{ end }}

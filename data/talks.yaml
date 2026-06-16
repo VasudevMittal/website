@@ -1,0 +1,38 @@
+conferences:
+
+  - title: "Confronting the Cosmological Principle"
+    event: "The Non-Gaussian Universe: Advanced Statistical Inference 
+            in the Era of Next-Generation Cosmological Surveys"
+    location: "FORTH, Heraklion, Greece"
+    date: "2026-06-16"
+    url: "https://indico.in2p3.fr/event/38089/#8-confronting-the-cosmological" 
+
+  - title: "Is the Universe Isotropic? - Maybe!!"
+    event: "CosmoVerseSchool@Sofia"
+    location: "IMech - Bulgarian Academy of Sciences, Sofia, Bulgaria"
+    date: "2026-05-28"
+    url: "https://indico.global/event/15928/contributions/157190/"
+    prize: "Runner-up for best talk (by popular vote)"
+    prize_url: "https://indico.global/event/15928/page/5842-cosmoversesofia2026-award"
+
+
+  - title: "Confronting the Cosmological Principle: Shaking the Foundation of the Cosmos"
+    event: "44th International Workshop on Bayesian Inference and 
+            Maximum Entropy Methods in Science and Engineering (MaxEnt 2026)"
+    location: "University of Auckland, New Zealand"
+    date: "2025-12-16"
+    url: "https://brendonbrewer.com/maxent2025/programme.pdf"
+    prize: "Best Presentation Award (Sponsored by the Entropy Journal)"
+    prize_url: "https://www.linkedin.com/posts/vasudev-mittal-62a02225b_winners-bestpresentationawards-activity-7421116081211113472-psBj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD_lowIB-yXDBOM8llg2UlKMwluKh9a1r_8"
+
+  - title: Polarimetric Analysis of Hermite-A Lunar crater using Chandrayaan-2 DFSAR Data
+    event: 3rd Indian Planetary Science Conference
+    location: Online
+    date: "2022-03-15"
+    url: "https://www.prl.res.in/ipsc2022/volume-of-abstract.pdf"
+
+  - title: Equation of State of Dark Energy from Generalized Trace Dynamics
+    event: 8th National Students Symposium on Physics
+    location: Bengaluru, India
+    date: "2021-11-12"
+    prize: "Best Presentation Award"
