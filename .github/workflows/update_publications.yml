@@ -7,6 +7,16 @@ on:
   workflow_dispatch:
 
 
+# Prevent multiple ADS updates running at the same time
+concurrency:
+  group: ads-publications-update
+  cancel-in-progress: false
+
+
+permissions:
+  contents: write
+
+
 jobs:
 
   update-publications:
@@ -17,6 +27,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
 
       - name: Setup Python
@@ -33,18 +45,19 @@ jobs:
       - name: Run ADS updater
         env:
           ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
+          ORCID_ID: ${{ secrets.ORCID_ID }}
 
         run: |
-          python scripts/update_ads.py
+          python scripts/run_ADS.py
 
 
       - name: Commit updated publications
         run: |
 
           git config user.name "github-actions"
-
           git config user.email "github-actions@github.com"
 
+          # Ensure we are working on latest main
           git pull --rebase origin main
 
           git add data/publications.json
