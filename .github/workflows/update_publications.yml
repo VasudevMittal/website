@@ -45,6 +45,8 @@ jobs:
 
           git config user.email "github-actions@github.com"
 
+          git pull --rebase origin main
+
           git add data/publications.json
 
           git diff --cached --quiet || \
