@@ -48,7 +48,7 @@ jobs:
           ORCID_ID: ${{ secrets.ORCID_ID }}
 
         run: |
-          python scripts/run_ADS.py
+          python scripts/update_ads.py
 
 
       - name: Commit updated publications
